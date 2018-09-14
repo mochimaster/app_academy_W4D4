@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MusicApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <font face="verdana" size="5" color="red">Music App!</font>
+    <br>
+    <br>
+
+
+  </head>
+
+  <body>
+
+    <br>
+      logged_in? : <%= logged_in? %>
+    <br>
+      session_token : <%= session[:session_token] %>
+    <br>
+    <% if logged_in? %>
+      <form action="<%= session_url %>" method='post'>
+            <input
+              type="hidden"
+              name="_method"
+              value="delete">
+            <%= auth_token %>
+            <input
+              type="submit"
+              value="Sign Out">
+      </form>
+    <% else %>
+      <form action="<%= new_user_url %>" method='get'>
+            <%= auth_token %>
+            <input
+              type="submit"
+              value="Sign Up">
+      </form>
+
+    <% end %>
+
+
+
+
+
+    <% if flash[:errors] %>
+      <p><%= flash[:errors] %></p>
+    <% end %>
+
+
+
+    <%= yield %>
+  </body>
+</html>

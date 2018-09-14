@@ -1,0 +1,18 @@
+<h1> Create User Page </h1>
+
+<form action=" <%= users_url  %> " method="post" >
+  <%= auth_token %>
+
+  <label for="new_user_email">Email address: </label>
+  <input type="text" name="user[email]" id="new_user_email" >
+  <br>
+
+  <label for="new_user_password">Password: </label>
+  <input type="password" name="user[password]" id="new_user_password">
+  <br>
+
+
+  <input type="submit" value="Create new account">
+
+</form>
+  <br>
